@@ -1,0 +1,29 @@
+{
+  "name": "myyoutubefilecabinet",
+  "version": "1.0.0",
+  "description": "Practicing backend, electron, and organize my youtube subscriptions",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViLinh27/myYoutubeFileCabinet.git"
+  },
+  "keywords": [
+    "javascript",
+    "electron",
+    "webapp",
+    "app"
+  ],
+  "author": "Linh Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViLinh27/myYoutubeFileCabinet/issues"
+  },
+  "homepage": "https://github.com/ViLinh27/myYoutubeFileCabinet#readme",
+  "devDependencies": {
+    "electron": "^36.4.0"
+  }
+}
