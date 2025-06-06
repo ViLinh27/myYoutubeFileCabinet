@@ -5,7 +5,7 @@ end so I thought something to categorize my youtube subscriptions would be a con
 
 # Process
 
-Make a base plate app to go more in depth on what each file is supposed to do.
+Make a base plate app to go more in depth on what each file is supposed to do. Comment as heavily as I can.
 
 # Categories
 
