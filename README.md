@@ -24,3 +24,7 @@ Make a base plate app to go more in depth on what each file is supposed to do.
 ## Art from a Cool Artist
 
 ## Fashion
+
+## Animation Industry
+
+## Travel
