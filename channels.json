@@ -1,0 +1,20 @@
+[
+  {
+    "id": "uniqueId1",
+    "name": "Fireship",
+    "link": "https://www.youtube.com/@Fireship",
+    "category": "Programming"
+  },
+  {
+    "id": "uniqueId2",
+    "name": "MKBHD",
+    "link": "https://www.youtube.com/@MKBHD",
+    "category": "Technology Reviews"
+  },
+  {
+    "id": "uniqueId3",
+    "name": "Travel Channel",
+    "link": "https://www.youtube.com/@TravelChannel",
+    "category": "Travel"
+  }
+]
