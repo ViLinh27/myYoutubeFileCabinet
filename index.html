@@ -12,8 +12,19 @@
 </head>
 
 <body>
-    <h1>Hello from Electron renderer!</h1>
-    <p>👋</p>
+    <h1>I can help organize your favorite youtube channels.</h1>
+    <div class="add-channel-form">
+        <h2>Add New Chnnel</h2>
+        <input type="text" id="channelName" placeholder="Channel Name">
+        <input type="text" id="channelLink" placeholder="Youtube Link">
+        <input type="text" id="channelCategory" placeholder="Category (ex. Programming, Tech, Travel)">
+        <button id="addChannelBtn">Add Channel</button>
+    </div>
+    <!-- end of add channel form-->
+
+    <div id="categoriesContainer"></div>
+
+    <script src="render.js"></script>
     <!--
         Notes:
         JSON file will hold the youtube channel data- array of objects where each obj is youtube channel

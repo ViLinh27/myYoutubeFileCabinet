@@ -1,0 +1,111 @@
+/*--- root app stuff ---*/
+body {
+    /*to edit later*/
+    font-family: sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1,
+h2 {
+    /*to edit later*/
+    color: #333;
+}
+
+.add-channel-form {
+    /*to edit later*/
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-channel-form input {
+    /*to edit later*/
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-channel-form button {
+    /*to edit later*/
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.category-folder {
+    /*to edit later*/
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.category-folder h3 {
+    /*to edit later*/
+    margin-top: 0;
+    color: #495057;
+    cursor: pointer;
+    /* Indicate it's collapsible */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.channel-list {
+    /*to edit later*/
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    display: none;
+    /* Hidden by default, toggled by JS */
+}
+
+.channel-list.expanded {
+    /*to edit later*/
+    display: block;
+}
+
+.channel-item {
+    /*to edit later*/
+    background-color: white;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.channel-item a {
+    /*to edit later*/
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.channel-item button {
+    /*to edit later*/
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*--- ---*/
+
+/*--- ---*/
+
+/*--- ---*/
