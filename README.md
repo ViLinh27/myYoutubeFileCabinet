@@ -28,3 +28,10 @@ Make a base plate app to go more in depth on what each file is supposed to do. C
 ## Animation Industry
 
 ## Travel
+
+# Sources
+
+https://github.com/saleel/nymdrive
+https://github.com/EshelEyni/DuckMap
+https://github.com/VitaliyRubachuk/Il-Gambero-Rosso.github.io
+https://github.com/AntonKhorev/osm-note-viewer
