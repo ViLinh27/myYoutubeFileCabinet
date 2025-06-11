@@ -90,6 +90,6 @@ a single JSON file is perfectly fine and simple.
 
 -need to guarantee that all your ipcMain.handle calls are registered before the BrowserWindow loads any content that might try to use those IPC channels.
 
-# Errors
+# Errors (eventually fixed)
 
 Uncaught (in promise) Error: Error invoking remote method 'load-channels': Error: No handler registered for 'load-channels'
