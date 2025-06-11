@@ -23,9 +23,9 @@ async function renderChannels(){
 
     //group channels by category
     const categorizedChannels =  channels.reduce((account,channel) =>{
-        const cateogry = channel.category.trim() || 'Uncategorized';
+        const category = channel.category.trim() || 'Uncategorized';
         if(!account[category]){
-            acc[category] =[];
+            account[category] =[];
         }
         account[category].push(channel);
         return account;

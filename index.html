@@ -25,39 +25,7 @@
     <div id="categoriesContainer"></div>
 
     <script src="render.js"></script>
-    <!--
-        Notes:
-        JSON file will hold the youtube channel data- array of objects where each obj is youtube channel
-
-        How does this work in file cabinet metaphor:
-        -category field inside json is the file folder
-        -channel is a file, each file within a folder
-        -UI represetation: each category/folder and channels inside get dynamically renderred.
-
-        Note about scalability, two options in case massive data sizes, but this is for personal use so json is fine:
-        -lowdb (which uses JSON files but offers more robust query/update methods) or even 
-        -sqlite3 for a more traditional relational approach. However, for most personal use cases, 
-        a single JSON file is perfectly fine and simple.
-
-        Note about addtional features:
-        -add a search/filter thing. That could filter channels by name, link or cateogry
-        --would still need to re-render channels based on filter criterira
-
-        -add an edit button for each channel so users can modify and save
-
-        -would need to have better error handling with user feedback: like a toast for saves that works, or errors
-
-        -add drag and drop so user can move channels between categories. would need html5 and drag and drop api
-    
-        -advanced feature is youtube api integration to fetch channel details like sub count and stuff, 
-        --would need api key and handling api requests
-
-        -add user preferences that would allow users to mess with dsiplay options like sort order and save them in separate json file
-        --Electron has a app.getPath('userData') for the separte json
-
-        -consider adding framework like React with electron for better UI
-
-    -->
+   
 </body>
 
 </html>
