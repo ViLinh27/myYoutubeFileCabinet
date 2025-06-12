@@ -61,6 +61,9 @@ Delete button to be put inside folder. Need to figure this one out
 ![add channel form button](./assets/buttons/form-button.png)
 add channel button (custom)
 
+![search button](./assets/buttons/search-button.png)
+search button
+
 ## Hex codes
 
 bg color: e86e62

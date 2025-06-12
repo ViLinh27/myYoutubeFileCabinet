@@ -87,7 +87,6 @@ button:hover {
 
 /*--- add channel form ---*/
 .add-channel-form {
-    /*to edit later*/
     background-image: url('./assets/form.png');
     background-repeat: no-repeat;
     padding: 5px;
@@ -106,8 +105,8 @@ button:hover {
     padding: 0px 15px 20px 2px;
 }
 
-.add-channel-form input {
-    /*to edit later*/
+.add-channel-form input,
+.search-form input {
     display: block;
     width: 80%;
     padding: 5px;
@@ -117,13 +116,24 @@ button:hover {
     background-color: transparent;
 }
 
-.add-channel-form button {
-    /*to edit later*/
+.add-channel-form button,
+.search-form button {
     background-image: url("./assets/buttons/form-button.png");
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/*--- search ---*/
+.search-form {
+    background-image: url('./assets/searchform.png');
+    background-repeat: no-repeat;
+    padding: 5px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #937f2b;
 }
 
 /*--- category folder---*/
