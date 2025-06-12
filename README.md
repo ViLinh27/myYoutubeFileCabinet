@@ -29,6 +29,22 @@ Make a base plate app to go more in depth on what each file is supposed to do. C
 
 ## Travel
 
+# Art
+
+## Assets
+
+## Hex codes
+
+bg color: e86e62
+manila folder: edd676
+
+form: fffae4
+form font color: 937f2b
+
+folder button main bg: ebe3c1
+folder button light: fffae4
+folder button dark: cdc49b
+
 # Sources
 
 https://github.com/saleel/nymdrive
