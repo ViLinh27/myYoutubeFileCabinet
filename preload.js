@@ -7,5 +7,8 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
   loadChannels: () => ipcRenderer.invoke('load-channels'),
-  saveChannels: (channels) => ipcRenderer.invoke('save-channels')
+  saveChannels: (channels) => ipcRenderer.invoke('save-channels'),
+  minimizeWindow: ()=>ipcRenderer.send('minimize-window'),
+  closeWindow: ()=>ipcRenderer.send('close-window'),
+  exitApp:()=>ipcRenderer.send('exit-app')
 });

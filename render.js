@@ -8,7 +8,21 @@ const channelCategoryInput = document.getElementById('channelCategory');
 const addChannelBtn = document.getElementById('addChannelBtn');
 const categoriesContainer = document.getElementById('categoriesContainer');
 
+//window controls:
+const exitbtn = document.getElementById("exit-btn");
+const minbtn = document.getElementById("min-btn");
+
 let channels = []; //in-memory array ot hold channel data
+
+//window controls fucntions
+//min button
+minbtn.addEventListener('click',()=>{
+    window.electronAPI.minimizeWindow();
+});
+//exit button
+exitbtn.addEventListener('click', ()=>{
+    window.electronAPI.exitApp();
+});
 
 //make a unique ID for each channel entry
 function generateUniqueId(){

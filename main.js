@@ -47,6 +47,18 @@ const createWindow = () => {
     }
   });
 
+  ipcMain.on('minimize-window', ()=>{
+    win.minimize();
+  })
+
+  ipcMain.on('close-window', ()=>{
+    win.close();
+  })
+
+  ipcMain.on('exit-app',()=>{
+    app.quit()
+  })
+
   win.loadFile('index.html')
 
   //for devtools

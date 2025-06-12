@@ -130,6 +130,7 @@ button:hover {
 .category-folder {
     /*to edit later*/
     background-image: url("./assets/folder.png");
+    background-repeat: no-repeat;
     border-radius: 8px;
     margin-bottom: 15px;
     padding: 15px;

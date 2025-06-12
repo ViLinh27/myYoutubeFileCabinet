@@ -110,6 +110,10 @@ a single JSON file is perfectly fine and simple.
 
 -need to guarantee that all your ipcMain.handle calls are registered before the BrowserWindow loads any content that might try to use those IPC channels.
 
-# Errors (eventually fixed)
+### Exit and Minimize windows not working at first
 
-Uncaught (in promise) Error: Error invoking remote method 'load-channels': Error: No handler registered for 'load-channels'
+Need to expose minimizeWindow() and exitApp() in the preload.js file for it to render correctly in the other ones like render.js or main.js
+
+Note how contextIsolation: true in main.js helps for security reasons. It helps prevent direct access to Node.js API like ipcRenderer to communicate with main process (main.js).
+
+So preload is basically a bridge, exposing functionalities of the APi and main process stuff.
