@@ -48,29 +48,43 @@ h2 {
     color: #333;
 }
 
+button {
+    font-family: "Pixelify Sans", sans-serif;
+}
+
 .add-channel-form {
     /*to edit later*/
-    background-color: white;
-    padding: 20px;
+    background-image: url('/assets/form.png');
+    background-repeat: no-repeat;
+    padding: 5px;
     border-radius: 8px;
     margin-bottom: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #937f2b;
+}
+.add-channel-heading{
+    padding:0;
+    margin:11px 5px;
+}
+
+.add-channel-txtbox{
+    padding:0px 15px 20px 2px;
 }
 
 .add-channel-form input {
     /*to edit later*/
     display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
+    width: 80%;
+    padding: 5px;
+    border: none;
     border-radius: 4px;
+    color: #937f2b;
+    background-color: transparent;
 }
 
 .add-channel-form button {
     /*to edit later*/
-    background-color: #007bff;
-    color: white;
+    background-image: url("/assets/buttons/form-button.png");
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -79,8 +93,7 @@ h2 {
 
 .category-folder {
     /*to edit later*/
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
+    background-image: url("/assets/folder.png");
     border-radius: 8px;
     margin-bottom: 15px;
     padding: 15px;
@@ -89,7 +102,7 @@ h2 {
 .category-folder h3 {
     /*to edit later*/
     margin-top: 0;
-    color: #495057;
+    color: #937f2b;
     cursor: pointer;
     /* Indicate it's collapsible */
     display: flex;
