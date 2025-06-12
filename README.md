@@ -9,6 +9,8 @@ Make a base plate app to go more in depth on what each file is supposed to do. C
 
 # Categories
 
+These are categories I would use to categorize my own youtube channel subscriptions
+
 ## Making Games
 
 ## Funnies
@@ -35,7 +37,29 @@ https://fonts.google.com/specimen/Pixelify+Sans
 
 # Art
 
+## What the planned screen looks like
+
+![main screen](./assets/assets-main_screen.png)
+
 ## Assets
+
+![folder to hold channels](./assets/folder.png)
+This is the folder that will hold channels by category
+
+![form](./assets/form.png)
+This is the background for the add channel form (for user to add their own youtube channels)
+
+![exit button](./assets/buttons/exit-button.png)
+Custom exit button
+
+![minimize button](./assets/buttons/min-button.png)
+Custom minimize button
+
+![delete button for folder](./assets/buttons/folder-button.png)
+Delete button to be put inside folder. Need to figure this one out
+
+![add channel form button](./assets/buttons/form-button.png)
+add channel button (custom)
 
 ## Hex codes
 
