@@ -29,6 +29,10 @@ Make a base plate app to go more in depth on what each file is supposed to do. C
 
 ## Travel
 
+# Font used
+
+https://fonts.google.com/specimen/Pixelify+Sans
+
 # Art
 
 ## Assets

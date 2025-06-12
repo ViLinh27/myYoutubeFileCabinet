@@ -1,9 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*--- Font stuff ---*/
+
+.pixelify-sans-mainfont {
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.raleway-subfont01 {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.roboto-subfont02 {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:
+        "wdth"100;
+}
+
 /*--- root app stuff ---*/
 body {
     /*to edit later*/
     font-family: sans-serif;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #e86e62;
 }
 
 h1,
