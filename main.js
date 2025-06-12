@@ -74,10 +74,10 @@ app.on('window-all-closed',()=>{
 //in mac, there's a weird issue of apps continuing to run even with no windows open.
 //so we're going to have the app open when no windows available
 //windows cannot be created before the ready eent, listen to activate events after app initizliaed
-app.whenReady().then(() => {
+/* app.whenReady().then(() => {
   createWindow()
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
-})
+}) */

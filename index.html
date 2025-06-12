@@ -18,20 +18,38 @@
 </head>
 
 <body>
-    <h1>I can help organize your favorite youtube channels.</h1>
-    <div class="add-channel-form">
-        <h2 class="add-channel-heading">Add New Channel</h2>
-        <div class="add-channel-txtbox">
-            <input type="text" id="channelName" placeholder="Channel Name">
-            <input type="text" id="channelLink" placeholder="Youtube Link">
-            <input type="text" id="channelCategory" placeholder="Category (ex. Programming, Tech, Travel)">
-        </div>
-        
-        <button id="addChannelBtn">Add Channel</button>
+    <!-- window controls-->
+    <div class="window-controls">
+        <button class="window-control" id="min-btn">
+            <img src="./assets/buttons/min-button.png" alt="min-btn"/>
+        </button>
+        <button class="window-control" id="exit-btn">
+            <img src="./assets/buttons/exit-button.png" alt="exit-btn"/>
+        </button>
     </div>
-    <!-- end of add channel form-->
+    
 
-    <div id="categoriesContainer"></div>
+    <div class="main-content">
+        <!-- header -->
+        <h1>I can help organize your favorite youtube channels.</h1>
+        
+        <!--add channel form -->
+        <div class="add-channel-form">
+            <h2 class="add-channel-heading">Add New Channel</h2>
+            <div class="add-channel-txtbox">
+                <input type="text" id="channelName" placeholder="Channel Name">
+                <input type="text" id="channelLink" placeholder="Youtube Link">
+                <input type="text" id="channelCategory" placeholder="Category (ex. Programming, Tech, Travel)">
+            </div>
+        
+            <!-- channels "file folders"-->
+            <button id="addChannelBtn">Add Channel</button>
+        </div>
+        <!-- end of add channel form-->
+        
+        <div id="categoriesContainer"></div>
+
+    </div><!--end of main content-->
 
     <script src="render.js"></script>
    

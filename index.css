@@ -39,7 +39,6 @@ body {
     font-family: "Pixelify Sans", sans-serif;
     padding: 20px;
     background-color: #e86e62;
-    font-family: ;
 }
 
 h1,
@@ -52,6 +51,41 @@ button {
     font-family: "Pixelify Sans", sans-serif;
 }
 
+button:hover {
+    transform: scale(1.1);
+}
+
+/*--- window controls---*/
+.window-controls {
+    position: absolute;
+    top: 4px;
+    right: 70px;
+    display: flex;
+    gap: 10px;
+    z-index: 300;
+    -webkit-app-region: no-drag;
+}
+
+.window-control {
+    background-color: transparent;
+    border: none;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px;
+    margin: 15px;
+}
+
+.main-content {
+    margin: 45px 15px 10px 15px;
+    position: absolute;
+}
+
+/*--- add channel form ---*/
 .add-channel-form {
     /*to edit later*/
     background-image: url('./assets/form.png');
@@ -62,13 +96,14 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #937f2b;
 }
-.add-channel-heading{
-    padding:0;
-    margin:11px 5px;
+
+.add-channel-heading {
+    padding: 0;
+    margin: 11px 5px;
 }
 
-.add-channel-txtbox{
-    padding:0px 15px 20px 2px;
+.add-channel-txtbox {
+    padding: 0px 15px 20px 2px;
 }
 
 .add-channel-form input {
@@ -91,6 +126,7 @@ button {
     cursor: pointer;
 }
 
+/*--- category folder---*/
 .category-folder {
     /*to edit later*/
     background-image: url("./assets/folder.png");
