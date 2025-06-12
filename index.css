@@ -2,6 +2,13 @@
 
 /*--- Font stuff ---*/
 
+@font-face {
+    font-family: "Pixelify Sans";
+    src: url("/assets/font/Courier_Prime-Lexend-Pixelify_Sans/Pixelify_Sans/static/PixelifySans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 .pixelify-sans-mainfont {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
@@ -29,9 +36,10 @@
 /*--- root app stuff ---*/
 body {
     /*to edit later*/
-    font-family: sans-serif;
+    font-family: "Pixelify Sans", sans-serif;
     padding: 20px;
     background-color: #e86e62;
+    font-family: ;
 }
 
 h1,
