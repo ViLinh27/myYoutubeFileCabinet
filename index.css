@@ -127,6 +127,7 @@ button:hover {
 
 /*--- search ---*/
 .search-form {
+    /* display:none; */
     background-image: url('./assets/searchform.png');
     background-repeat: no-repeat;
     padding: 5px;
@@ -134,6 +135,14 @@ button:hover {
     margin-bottom: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #937f2b;
+}
+
+#exit-search-btn{
+    background-image: url('./assets/buttons/exit-search-button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
 }
 
 /*--- category folder---*/

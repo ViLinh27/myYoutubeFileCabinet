@@ -11,6 +11,7 @@ const categoriesContainer = document.getElementById('categoriesContainer');
 //window controls:
 const exitbtn = document.getElementById("exit-btn");
 const minbtn = document.getElementById("min-btn");
+const searchbtn = document.getElementById("searchBtn");
 
 let channels = []; //in-memory array ot hold channel data
 
