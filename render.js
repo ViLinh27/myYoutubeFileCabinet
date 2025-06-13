@@ -11,7 +11,9 @@ const categoriesContainer = document.getElementById('categoriesContainer');
 //window controls:
 const exitbtn = document.getElementById("exit-btn");
 const minbtn = document.getElementById("min-btn");
-const searchbtn = document.getElementById("searchBtn");
+const searchbtn = document.getElementById("search-btn");
+
+const searchForm = document.querySelector(".search-form");
 
 let channels = []; //in-memory array ot hold channel data
 
@@ -134,6 +136,18 @@ addChannelBtn.addEventListener('click', async()=>{
     } else {
         alert('Please fill in all fields.');
     }
+});
+
+searchbtn.addEventListener('click',()=>{
+    //if the style of the search form is display none
+    /* if (searchForm.style.display ==='none' || searchForm.style.display === '' ){
+        searchForm.style.display = 'block';
+    }
+    else{
+        searchForm.style.display = 'none';
+    } */
+
+    searchForm.classList.toggle('is-visible');//adds /removes this
 });
 
 //load initially when app opens up'

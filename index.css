@@ -61,9 +61,25 @@ button:hover {
     top: 4px;
     right: 70px;
     display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+    align-content: space-around;
     gap: 10px;
     z-index: 300;
     -webkit-app-region: no-drag;
+    width:100%;
+    height:100px;
+}
+.window-controls_left,
+.window-controls_right{
+    height: 80px;
+    width: 180px;
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content: space-around;
+    align-content: space-around;
 }
 
 .window-control {
@@ -127,7 +143,7 @@ button:hover {
 
 /*--- search ---*/
 .search-form {
-    /* display:none; */
+    display:none;
     background-image: url('./assets/searchform.png');
     background-repeat: no-repeat;
     padding: 5px;
@@ -136,13 +152,40 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #937f2b;
 }
+.search-form.is-visible{
+    display:block;
+}
+.search-form_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    align-content: space-between;
+    /* background-color: red; */
+}
+.search-form-heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: flex-start;
+    /* background-color: yellow; */
+    width: 50%;
+}
 
 #exit-search-btn{
+    /* width: 50%; */
     background-image: url('./assets/buttons/exit-search-button.png');
     background-size: contain;
     background-repeat: no-repeat;
+    /* background-color: yellow; */
     background-color: transparent;
     border: none;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-end;
+    justify-content: flex-end;
 }
 
 /*--- category folder---*/

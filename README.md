@@ -144,3 +144,12 @@ Need to expose minimizeWindow() and exitApp() in the preload.js file for it to r
 Note how contextIsolation: true in main.js helps for security reasons. It helps prevent direct access to Node.js API like ipcRenderer to communicate with main process (main.js).
 
 So preload is basically a bridge, exposing functionalities of the APi and main process stuff.
+
+### typeerror with the Search window button
+
+Uncaught TypeError: Cannot read properties of null (reading 'classList')
+    at HTMLButtonElement.<anonymous> (render.js:150:16)
+
+The searchForm const is null when trying to access classList property. So the line that says document.querySelector("search-form") didn't find anything
+
+It was a typo. I was missing a .
