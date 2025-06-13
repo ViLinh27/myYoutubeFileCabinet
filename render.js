@@ -13,6 +13,8 @@ const exitbtn = document.getElementById("exit-btn");
 const minbtn = document.getElementById("min-btn");
 const searchbtn = document.getElementById("search-btn");
 
+const exitSearchBtn = document.getElementById("exit-search-btn");
+
 const searchForm = document.querySelector(".search-form");
 
 let channels = []; //in-memory array ot hold channel data
@@ -148,6 +150,10 @@ searchbtn.addEventListener('click',()=>{
     } */
 
     searchForm.classList.toggle('is-visible');//adds /removes this
+});
+
+exitSearchBtn.addEventListener('click', ()=>{
+    searchForm.classList.remove('is-visible');
 });
 
 //load initially when app opens up'
