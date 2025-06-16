@@ -128,7 +128,9 @@ addChannelBtn.addEventListener('click', async()=>{
         });
 
         //electron saves the channel data to json for persistence
+        //pass the channel data into render
         await window.electronAPI.saveChannels(channels); // Save to JSON
+        console.log('Channels after save:', channels);
         renderChannels(); // Re-render UI with new data
 
         // Clear form fields when done in case we need more 

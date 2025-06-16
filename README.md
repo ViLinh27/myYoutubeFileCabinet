@@ -164,3 +164,17 @@ The one element in the json file might be messing with how save-channels works t
 
 how to address unexpected paths or environment issues:
 see if data file is being saved correctly in correct file.
+
+It looks like there's an issue of how ipcRenderer.invoke and ipcmain.hanlde pass arguments. The argument passsed into ipcRenderer.invoke are directly received as one after the other arguments in ipcMain.handle, after the event object.
+
+There's an issue here:
+saveChannels: (channels) => ipcRenderer.invoke('save-channels'),
+
+saveChannels in preload got defined in a way where I called ipcRenderer.invoke without passing the channels argument to the invoke method itself. I only defined it as a paramter in the saveChannels function that contextBridge already creates.
+
+Passing channels into the invoke directly seems to make it work now.
+
+### Persistence works but why doesn't the empty array in channels.json change?
+
+We can't have app data clutter main directory and it looks like it's also a security thing to keep user-modifiable data away from core app files.
+The line const app.getPath('userData') makes a special directory away from the main app files. The special directory is on the user's systems and is where we can find the json file.

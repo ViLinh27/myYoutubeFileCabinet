@@ -13,6 +13,7 @@ function registerIpcHandlers(){//ipc handlers will go here to go off before crea
     try{
       if(fs.existsSync(CHANNEL_DATA)){
         const data = await fs.promises.readFile(CHANNEL_DATA, 'utf-8');
+        console.log('Loading channels:', data);
         return JSON.parse(data);
       }
       return []; //return empty arra if file doesn't exist
@@ -24,6 +25,7 @@ function registerIpcHandlers(){//ipc handlers will go here to go off before crea
 
   ipcMain.handle('save-channels', async (event, channels) => {
     try {
+      console.log('Saving channels:', channels);
       await fs.promises.writeFile(CHANNEL_DATA, JSON.stringify(channels, null, 2), 'utf8');
       return { success: true };
     } catch (error) {
@@ -70,7 +72,7 @@ const createWindow = () => {
 app.whenReady().then(() => {
 
   registerIpcHandlers();//register ipc handlers first and foremost
-
+  console.log('CHANNEL_DATA path:', CHANNEL_DATA);
   createWindow();//create the browser window
 
   app.on('activate',() =>{
