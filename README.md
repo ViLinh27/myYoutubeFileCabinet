@@ -153,3 +153,14 @@ Uncaught TypeError: Cannot read properties of null (reading 'classList')
 The searchForm const is null when trying to access classList property. So the line that says document.querySelector("search-form") didn't find anything
 
 It was a typo. I was missing a .
+
+### The inputed channels are not persistent
+
+The ipcMain.handle and ipcREnderer.invoke should be fine with helpign persistence.
+
+2 potential problems. The setup I had with the one json element already in json file or a path issue with loadChannels
+
+The one element in the json file might be messing with how save-channels works too because of how it might not add the data correctly, so i gotta empty the channels.json.
+
+how to address unexpected paths or environment issues:
+see if data file is being saved correctly in correct file.
