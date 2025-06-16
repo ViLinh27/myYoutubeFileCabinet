@@ -14,7 +14,7 @@ const minbtn = document.getElementById("min-btn");
 const searchbtn = document.getElementById("search-btn");
 
 const exitSearchBtn = document.getElementById("exit-search-btn");
-
+const searchChannels = document.getElementById("searchChannelshBtn");
 const searchForm = document.querySelector(".search-form");
 
 let channels = []; //in-memory array ot hold channel data
