@@ -25,5 +25,8 @@
   "homepage": "https://github.com/ViLinh27/myYoutubeFileCabinet#readme",
   "devDependencies": {
     "electron": "^36.4.0"
+  },
+  "dependencies": {
+    "fuse.js": "^7.1.0"
   }
 }

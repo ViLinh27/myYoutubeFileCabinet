@@ -7,6 +7,16 @@ end so I thought something to categorize my youtube subscriptions would be a con
 
 Make a base plate app to go more in depth on what each file is supposed to do. Comment as heavily as I can.
 
+Draw out how i would visualize needed screens.
+
+Draw out each asset with appropriate dimensions.
+
+Make the basic html components and style them accordingly in css.
+
+Add functionality to buttons with render.js and pass into main.js and preload as needed. Debug for persistence issues.
+
+Implement the search functionality.
+
 # Categories
 
 These are categories I would use to categorize my own youtube channel subscriptions
@@ -178,3 +188,7 @@ Passing channels into the invoke directly seems to make it work now.
 
 We can't have app data clutter main directory and it looks like it's also a security thing to keep user-modifiable data away from core app files.
 The line const app.getPath('userData') makes a special directory away from the main app files. The special directory is on the user's systems and is where we can find the json file.
+
+## Use a library vs writing my own fuzzy search?
+
+established libraries can handle better scoring for how close the typing match is. Plus already optimized, and already support difffernt matching styles (like hilighting and stuff).
