@@ -1,6 +1,10 @@
 //renderer process
 //renders UI and handles user interactions
 //where the filing cabinet will live
+
+//need it for fuzzy search
+const Fuse = require('fuse.js');
+
 //UI logic
 const channelNameInput = document.getElementById('channelName');
 const channelLinkInput = document.getElementById('channelLink');
@@ -15,11 +19,13 @@ const searchbtn = document.getElementById("search-btn");
 
 const exitSearchBtn = document.getElementById("exit-search-btn");
 const searchChannels = document.getElementById("searchChannelshBtn");
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResultsContainer");
 const searchForm = document.querySelector(".search-form");
 
 let channels = []; //in-memory array ot hold channel data
 
-//window controls fucntions
+//---WINDOW CONTROLS FUNCTIONS ---///
 //min button
 minbtn.addEventListener('click',()=>{
     window.electronAPI.minimizeWindow();
@@ -35,6 +41,7 @@ function generateUniqueId(){
     return '-'+Math.random().toString(36).substr(2,9);
 }
 
+//--- ASYNC FUNCITONS ---//
 //render channels based on categories
 async function renderChannels(){
     //to fill later with channels data:
@@ -107,10 +114,13 @@ async function renderChannels(){
 //load channels on startup of app
 async function loadChannels() {
     //when the window for app loads, we get the channels
-    channels = await window.electronAPI.loadChannels();
+    channels = await window.electronAPI.loadChannels();//the data of channels inputed in by user.
+    initializeFuse();//initizlie fuse after channels are loaded
     renderChannels();
 }
 
+
+//---SCREEN BUTTONS FUNCTIONALITY ---//
 //add channel button event handler (if user needs more channels)
 addChannelBtn.addEventListener('click', async()=>{
     const name = channelNameInput.value.trim();
@@ -157,6 +167,88 @@ searchbtn.addEventListener('click',()=>{
 exitSearchBtn.addEventListener('click', ()=>{
     searchForm.classList.remove('is-visible');
 });
+
+//--- PERFORM SEARCH ---///
+const fuseOptions = {
+    //key to use when searching each channel object
+    keys: [
+        {name: 'name', weight: 0.7},//people search by name more usually so bigger weight means bigger priority
+        {name: 'category', weight: 0.3}//searching by category as a plan b, but has less priority
+    ],
+    threshold:0.3,//how fuzzy the match is(0.0 is exact match to 1.0 is super fuzzy)
+    ignoreLocation: true, //we don't care about the posiiton of the match (any category or where it is in the name)
+    findAllMatches:true,//we find anything that remotely looks like a match (not just the first one that pops up)
+    includeScore: true,//the score of how good the match is good for ranking the matches and debugging in case this goes horribly wrong
+    //includeMatches: true//hilighting matched text (way more of a hassle)
+};
+let fuse; //declare fuse instance where channels array scope is 
+//function to initizlie Fuse.js (call this whenenver channels array data changes)
+function initializeFuse(){
+    fuse = new Fuse(channels, fuseOptions);
+}
+//actually do the search and render results
+function performSearch(query){
+    searchResults.innerHTML = '';//clear any existing search results if there are any
+
+    //if query is empty basically
+    if(!query.trim()){
+        renderChannels();
+        return;
+    }
+
+    //if there is no fuse yet
+    //but loadchannels should load fine so this doesn't happen
+    if(!fuse){
+        //failsafe
+        initializeFuse();
+    }
+
+    const results = fuse.search(query);//fuse will search through the query that is the channel data
+    console.log('Search results: ', results);//DEBUG
+
+    if(results.length > 0){//is there any result that exists after search
+        //display search results:
+        const searchResultList = document.createElement('ul');
+        searchResultList.classList.add('channel-list','expanded');//styles already there
+
+        results.forEach(result=>{
+            const channel = result.item;//the channel object itself
+
+            const channelItem = docuemnt.createElement('li');//for the search result list
+            channelItem.classList.add('channel-item');//for styling
+
+            const channelLink = document.createElement('a');//create link for search results
+            channelLink.href = channel.link;//where is each link in search result gonna go?
+            channelLink.textContent = `${channel.name} (Category: ${channel.category})`; // display name and category
+            channelLink.target = '_blank';// to open link in new tab or something
+            channelItem.appendChild(channelLink);//add the channel link to channel item in list
+
+            const deleteButton = document.createElement('button');//delete any search results if desired 
+            deleteButton.textContent = 'Delete';//for the delete channel button in search list
+            deleteButton.addEventListener('click', async () => {
+                //what happens in the delete channel button when clicked
+                //we wait for channels to be loaded in by user of course
+                channels = channels.filter(c => c.id !== channel.id);//filter channels by id if needed
+                await window.electronAPI.saveChannels(channels);
+                initializeFuse(); // Re-initialize Fuse after data changes
+                performSearch(searchInput.value.trim()); // Re-run search with updated data
+            });
+            channelItem.appendChild(deleteButton);//add the delete channel button to channel list in search results
+
+            searchResultsList.appendChild(channelItem);//add each channel item meant for search result to search list
+        });
+
+        searchResults.appendChild(searchResultList);//add the search results list to the container for search results
+        //hide the categories when displaying search results for cleaner look
+        categoriesContainer.style.display = 'none';
+    }
+    else{
+        //what if nothing matches the search query???
+        searchResults.innerHTML = '<p>No channels found matching your search.</p>';
+        //hide the categories whether found channels in search or not
+        categoriesContainer.style.display = 'none';
+    }
+}
 
 //load initially when app opens up'
 loadChannels();
