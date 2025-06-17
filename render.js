@@ -34,7 +34,6 @@ minbtn.addEventListener('click',()=>{
 exitbtn.addEventListener('click', ()=>{
     window.electronAPI.exitApp();
 });
-
 //make a unique ID for each channel entry
 function generateUniqueId(){
     //edit later
@@ -166,7 +165,21 @@ searchbtn.addEventListener('click',()=>{
 
 exitSearchBtn.addEventListener('click', ()=>{
     searchForm.classList.remove('is-visible');
+    //clear any searches and re-render categories as needed back to default
+    searchInput.value = ''; //clear search input back to default
+    categoriesContainer.style.display = 'block'; // Show main categories again
+    renderChannels(); //re-render all channels
 });
+
+//search channels button
+searchChannels.addEventListener('click', ()=>{
+    performSearch(searchInput.value);
+});
+//Live search as the user types
+searchInput.addEventListener('input', () => {
+    performSearch(searchInput.value);
+})
+
 
 //--- PERFORM SEARCH ---///
 const fuseOptions = {
