@@ -192,3 +192,9 @@ The line const app.getPath('userData') makes a special directory away from the m
 ## Use a library vs writing my own fuzzy search?
 
 established libraries can handle better scoring for how close the typing match is. Plus already optimized, and already support difffernt matching styles (like hilighting and stuff).
+
+## Notes about the seaerch fucntionality
+
+When searching, gonna clear the categories container (folders) to make the search results UI cleaner. When the search is done, i can bring them back into display
+
+### how scalable is this method of searching ??

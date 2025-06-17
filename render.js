@@ -45,7 +45,9 @@ function generateUniqueId(){
 async function renderChannels(){
     //to fill later with channels data:
     categoriesContainer.innerHTML='';//clear anything in there
+    categoriesContainer.style.display = 'block';//displays by default
 
+    
     //group channels by category
     const categorizedChannels =  channels.reduce((account,channel) =>{
         const category = channel.category.trim() || 'Uncategorized';
