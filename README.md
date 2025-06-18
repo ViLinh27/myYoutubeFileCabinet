@@ -189,6 +189,8 @@ Passing channels into the invoke directly seems to make it work now.
 We can't have app data clutter main directory and it looks like it's also a security thing to keep user-modifiable data away from core app files.
 The line const app.getPath('userData') makes a special directory away from the main app files. The special directory is on the user's systems and is where we can find the json file.
 
+### After search implemented, the other buttons don't seem to work. Maybe a z-order issue
+
 ## Use a library vs writing my own fuzzy search?
 
 established libraries can handle better scoring for how close the typing match is. Plus already optimized, and already support difffernt matching styles (like hilighting and stuff).
