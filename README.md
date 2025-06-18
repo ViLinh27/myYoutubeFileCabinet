@@ -198,3 +198,26 @@ established libraries can handle better scoring for how close the typing match i
 When searching, gonna clear the categories container (folders) to make the search results UI cleaner. When the search is done, i can bring them back into display
 
 ### how scalable is this method of searching ??
+
+#### Fuse
+
+-keys are relevant and name is prioritized because that's what people naturally go for in searches anyway
+-Threshhold: can be adjusted for how fuzzy the matches are. Lower means strict, higher means looser.
+-InitializeFuse(): callling this when channels array data changes like when loading or saving. To keep this efficient so we don't have to rebuild with every key stroke
+
+#### Client side search
+
+Channels array is already inmemoery. This is a small app so we don't need server side setup work.
+
+#### ipcRenderer/ipcMain use not needed for the big search
+
+the ipc stuff is mainly needed for the entire data set (loading and saving) and channels is already an array in renderer.js (so client side) so we're good on needing ipc stuff to directly impact search.
+
+#### Dynamic rendering
+
+peformSearch function dynamically generates results for search content,
+using css classes that are already there so no new ones need to be made
+
+#### clear/reset search results
+
+clearing the search input and results to default makes sure nothing gets cluttered.
