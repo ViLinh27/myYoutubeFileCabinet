@@ -189,11 +189,46 @@ Passing channels into the invoke directly seems to make it work now.
 We can't have app data clutter main directory and it looks like it's also a security thing to keep user-modifiable data away from core app files.
 The line const app.getPath('userData') makes a special directory away from the main app files. The special directory is on the user's systems and is where we can find the json file.
 
-### After search implemented, the other buttons don't seem to work. Maybe a z-order issue
+### After search implemented, the other buttons don't seem to work. Maybe a z-index issue.
+
+Yes it is a z-index issue. There's an overlap between main content being position absolute and some window controls.
+
+Window controls like exit and stuff are good for position absolute since it'll be at the top and outside the normal flow of the app. But the main content stuff is also position absolute, which is a problem. They a relative to the cloest ancestor (position wise) or just the body.
+
+There's a main-content issue where since it rendered after window controls (likely) and there's position absolute, main content can overlap over window controls (likely). There's some events blocked likely.
+
+position absolute is better for stuff like window controls vs main content stuff.
+
+This was fixed by installing parcel, the library helps bundle together render.js stuff (which was the wiser option apprently) so the code stays simpler when working with Fuse (parcel is in this package thing). this bundles render.js and some other stuff into a single js file so that can be laoded into the browser environment directly by electron so we don't need the 'require" . Apprently standard when handlingn external libraries and keep secure.
+
+### search doesn't work after bundling render.js with parcel library stuff
+
+Fuse variable initialized as new var isn't actually Fuse constructor apparently. It could be object containing contructor or different type of export (for example).
+
+This line could make the Fuse constructor nested (as mentioned above): const Fuse=require('fuse.js');.
 
 ## Use a library vs writing my own fuzzy search?
 
 established libraries can handle better scoring for how close the typing match is. Plus already optimized, and already support difffernt matching styles (like hilighting and stuff).
+
+New way to import fuse involves FuseModule directly getting constructor forfuse.
+The default keyword is the default export is kinda like a fail safe. If the default export exists, then that's used, if not just FuseModule export is gonna be used.
+
+## searchResultList is not defined error
+
+The error means JS cannot find the varibale when it's being used in the forEach loop (it's defined as a const).
+
+This kinda error can happen with bundling libraries optimizing the code, so the const definition could be skipped?
+
+There's going to be scope issues soemtiems. I had one with searchResultList variable. Because of the bundling going on with the parcel package. May need to move the variale anc change keywords to let if needed.
+
+Clean out Parcel's cache may be needed (in the output directory-the special dist folder)
+
+Closer look, confirms there's a deeper issue with how stuff is created to the DOM. because console.log("search results: ' results"), is actually showing search resulst in console. not to user though.
+
+A debug statement shows that searChresults is creating a ul element correctly but there's nothing in it. This means Fuse.js is working right. We'll need to fix the loops in eprformSearch because reference error still there.
+
+It was a typo. I had an extra s.
 
 ## Notes about the seaerch fucntionality
 

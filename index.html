@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" /> -->
+    <!-- <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" /> -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+    <!--above meta helps allow inline styles and local stuff and google fonts styles to apply and go through security-->
+
     <title>Hello from Electron renderer!</title>
 
     <link rel="stylesheet" href="index.css"/>
@@ -36,42 +40,44 @@
     
     </div>
     
-
-    <div class="main-content">
-        <!-- header -->
-        <h1>I can help organize your favorite youtube channels.</h1>
+    <div class="app-wrapper">
+        <div class="main-content">
+            <!-- header -->
+            <h1>I can help organize your favorite youtube channels.</h1>
         
-        <!--add channel form -->
-        <div class="add-channel-form">
-            <h2 class="add-channel-heading">Add New Channel</h2>
-            <div class="add-channel-txtbox">
-                <input type="text" id="channelName" placeholder="Channel Name">
-                <input type="text" id="channelLink" placeholder="Youtube Link">
-                <input type="text" id="channelCategory" placeholder="Category (ex. Programming, Tech, Travel)">
+            <!--add channel form -->
+            <div class="add-channel-form">
+                <h2 class="add-channel-heading">Add New Channel</h2>
+                <div class="add-channel-txtbox">
+                    <input type="text" id="channelName" placeholder="Channel Name">
+                    <input type="text" id="channelLink" placeholder="Youtube Link">
+                    <input type="text" id="channelCategory" placeholder="Category (ex. Programming, Tech, Travel)">
+                </div>
+        
+                <!-- channels "file folders"-->
+                <button id="addChannelBtn">Add Channel</button>
+            </div>
+            <!-- end of add channel form-->
+        
+            <!--search form-->
+            <div class="search-form">
+                <div class="search-form_header">
+                    <h2 class="search-form-heading">Search</h2>
+                    <button id="exit-search-btn"></button>
+                </div>
+        
+                <input id="searchInput" type="text" placeholder="Search channel name/category..">
+                <button id="searchChannelshBtn">Search Channels</button>
+                <div id="searchResultsContainer"></div>
             </div>
         
-            <!-- channels "file folders"-->
-            <button id="addChannelBtn">Add Channel</button>
-        </div>
-        <!-- end of add channel form-->
-
-        <!--search form-->
-        <div class="search-form">
-            <div class="search-form_header">
-                <h2 class="search-form-heading">Search</h2>
-                <button id="exit-search-btn"></button>
-            </div>
-            
-            <input id="searchInput" type="text" placeholder="Search channel name/category..">
-            <button id="searchChannelshBtn">Search Channels</button>
-            <div id="searchResultsContainer"></div>
-        </div>
+            <div id="categoriesContainer"></div>
         
-        <div id="categoriesContainer"></div>
+        </div>
+        <!--end of main content-->
+    </div>
 
-    </div><!--end of main content-->
-
-    <script src="render.js"></script>
+    <script src="./dist/render.js"></script>
    
 </body>
 

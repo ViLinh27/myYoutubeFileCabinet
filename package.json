@@ -4,8 +4,9 @@
   "description": "Practicing backend, electron, and organize my youtube subscriptions",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "test"
+    "start": "npm run build-renderer && electron .",
+    "test": "test",
+    "build-renderer": "parcel build render.js --out-dir dist --out-file render.js --target browser --no-cache"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   },
   "homepage": "https://github.com/ViLinh27/myYoutubeFileCabinet#readme",
   "devDependencies": {
-    "electron": "^36.4.0"
+    "electron": "^36.4.0",
+    "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
     "fuse.js": "^7.1.0"

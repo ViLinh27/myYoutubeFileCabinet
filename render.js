@@ -3,7 +3,9 @@
 //where the filing cabinet will live
 
 //need it for fuzzy search
-const Fuse = require('fuse.js');
+// const Fuse = require('fuse.js');//weird nesting issue potentially messing with search stuff
+const FuseModule = require('fuse.js');
+const Fuse = FuseModule.default || FuseModule;
 
 //UI logic
 const channelNameInput = document.getElementById('channelName');
@@ -83,7 +85,7 @@ async function renderChannels(){
 
         sortedChannelsInCategory.forEach(channel =>{
             //channel item after being sorted
-            const channelItem = document.createElement('li');
+            const channelItem = document.createElement('li');//search result list
             channelItem.classList.add('channel-item');
 
             //link to channel after sorted
@@ -178,9 +180,9 @@ searchChannels.addEventListener('click', ()=>{
     performSearch(searchInput.value);
 });
 //Live search as the user types
-searchInput.addEventListener('input', () => {
+/* searchInput.addEventListener('input', () => {
     performSearch(searchInput.value);
-})
+}) */
 
 
 //--- PERFORM SEARCH ---///
@@ -221,22 +223,27 @@ function performSearch(query){
     const results = fuse.search(query);//fuse will search through the query that is the channel data
     console.log('Search results: ', results);//DEBUG
 
+    let searchResultList;//will account for change in list content probably
     if(results.length > 0){//is there any result that exists after search
         //display search results:
-        const searchResultList = document.createElement('ul');
+        searchResultList = document.createElement('ul');
         searchResultList.classList.add('channel-list','expanded');//styles already there
 
         results.forEach(result=>{
             const channel = result.item;//the channel object itself
 
-            const channelItem = docuemnt.createElement('li');//for the search result list
+            const channelItem = document.createElement('li');//for the search result list
             channelItem.classList.add('channel-item');//for styling
 
             const channelLink = document.createElement('a');//create link for search results
             channelLink.href = channel.link;//where is each link in search result gonna go?
             channelLink.textContent = `${channel.name} (Category: ${channel.category})`; // display name and category
             channelLink.target = '_blank';// to open link in new tab or something
+            
+            console.log('channel link: ',channelLink);//deubug
             channelItem.appendChild(channelLink);//add the channel link to channel item in list
+
+            console.log('channel, item: ',channelItem);//debug
 
             const deleteButton = document.createElement('button');//delete any search results if desired 
             deleteButton.textContent = 'Delete';//for the delete channel button in search list
@@ -250,8 +257,40 @@ function performSearch(query){
             });
             channelItem.appendChild(deleteButton);//add the delete channel button to channel list in search results
 
-            searchResultsList.appendChild(channelItem);//add each channel item meant for search result to search list
+            console.log('State of searchResultList before append: ', searchResultList);//debug
+            //issue line here:
+            searchResultList.appendChild(channelItem);//add each channel item meant for search result to search list
+            console.log('searchresults after append: ', searchResultList);//debug
         });
+ 
+
+        /* for (const result of results) { // Loop through each search result of seach Results
+            const channel = result.item; // Get the original channel object
+
+            const channelItem = document.createElement('li'); // Create list item for the channel
+            channelItem.classList.add('channel-item'); // Add styling class
+
+            const channelLink = document.createElement('a'); // Create the link element
+            channelLink.href = channel.link; // Set the link URL
+            channelLink.textContent = `${channel.name} (Category: ${channel.category})`; // Display name and category
+            channelLink.target = '_blank'; // Open link in default browser
+            channelItem.appendChild(channelLink); // Add link to the list item
+
+            const deleteButton = document.createElement('button'); // Create delete button
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', async () => {
+                // Filter out the deleted channel and save updated list
+                channels = channels.filter(c => c.id !== channel.id);
+                await window.electronAPI.saveChannels(channels);
+                initializeFuse(); // Re-initialize Fuse after data changes
+                performSearch(searchInput.value.trim()); // Re-run search to update display
+            });
+            channelItem.appendChild(deleteButton); // Add delete button to list item
+
+            // This line should now work correctly as searchResultList is directly accessible
+            console.log('State of searchResultList before append (for-of):', searchResultList); // Keep this log for now
+            searchResultsList.appendChild(channelItem); // Append the channel item to the search results list
+        }      */
 
         searchResults.appendChild(searchResultList);//add the search results list to the container for search results
         //hide the categories when displaying search results for cleaner look
