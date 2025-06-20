@@ -143,7 +143,7 @@ addChannelBtn.addEventListener('click', async()=>{
         //electron saves the channel data to json for persistence
         //pass the channel data into render
         await window.electronAPI.saveChannels(channels); // Save to JSON
-        console.log('Channels after save:', channels);
+        // console.log('Channels after save:', channels);
         renderChannels(); // Re-render UI with new data
 
         // Clear form fields when done in case we need more 
@@ -221,7 +221,7 @@ function performSearch(query){
     }
 
     const results = fuse.search(query);//fuse will search through the query that is the channel data
-    console.log('Search results: ', results);//DEBUG
+    // console.log('Search results: ', results);//DEBUG
 
     let searchResultList;//will account for change in list content probably
     if(results.length > 0){//is there any result that exists after search
@@ -240,10 +240,10 @@ function performSearch(query){
             channelLink.textContent = `${channel.name} (Category: ${channel.category})`; // display name and category
             channelLink.target = '_blank';// to open link in new tab or something
             
-            console.log('channel link: ',channelLink);//deubug
+            // console.log('channel link: ',channelLink);//deubug
             channelItem.appendChild(channelLink);//add the channel link to channel item in list
 
-            console.log('channel, item: ',channelItem);//debug
+            // console.log('channel, item: ',channelItem);//debug
 
             const deleteButton = document.createElement('button');//delete any search results if desired 
             deleteButton.textContent = 'Delete';//for the delete channel button in search list
@@ -257,10 +257,10 @@ function performSearch(query){
             });
             channelItem.appendChild(deleteButton);//add the delete channel button to channel list in search results
 
-            console.log('State of searchResultList before append: ', searchResultList);//debug
+            // console.log('State of searchResultList before append: ', searchResultList);//debug
             //issue line here:
             searchResultList.appendChild(channelItem);//add each channel item meant for search result to search list
-            console.log('searchresults after append: ', searchResultList);//debug
+            // console.log('searchresults after append: ', searchResultList);//debug
         });
  
 
@@ -288,7 +288,7 @@ function performSearch(query){
             channelItem.appendChild(deleteButton); // Add delete button to list item
 
             // This line should now work correctly as searchResultList is directly accessible
-            console.log('State of searchResultList before append (for-of):', searchResultList); // Keep this log for now
+            // console.log('State of searchResultList before append (for-of):', searchResultList); // Keep this log for now
             searchResultsList.appendChild(channelItem); // Append the channel item to the search results list
         }      */
 

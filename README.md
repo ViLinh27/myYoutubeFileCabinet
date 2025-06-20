@@ -17,6 +17,8 @@ Add functionality to buttons with render.js and pass into main.js and preload as
 
 Implement the search functionality.
 
+So much debugging :(.
+
 # Categories
 
 These are categories I would use to categorize my own youtube channel subscriptions
