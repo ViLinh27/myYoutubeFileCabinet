@@ -1,7 +1,7 @@
 //2 modules imported:
 //app: controls app's even lifecycle
 //BrowserWindow, creates and manages app windows
-const { app, BrowserWindow, ipcMain } = require('electron')//import needed modules
+const { app, BrowserWindow, nativeImage, ipcMain } = require('electron')//import needed modules
 const path=require('path');
 const fs = require('fs');
 
@@ -38,9 +38,31 @@ function registerIpcHandlers(){//ipc handlers will go here to go off before crea
 //reusable function to insantiate windows
 //loads web page into new BrowserWindow instance
 const createWindow = () => {
+  let iconFileName;
+  if (process.platform === 'darwin') { //macOS
+    iconFileName = 'icon-youtubefiling.icns';
+  } else if (process.platform === 'win32') { //Windows
+    iconFileName = 'icon-youtubefiling.ico';
+  } else { //Linux/Other
+    iconFileName = 'icon-youtubefiling.png'; //Using PNG for Linux/fallback
+  }
+
+  const iconPath = path.join(__dirname, 'assets','icons',iconFileName);//build the path to the icon
+  let appIcon = null;//null FOR NOW
+
+   try {
+      appIcon = nativeImage.createFromPath(iconPath);//create the path with the image
+      if (appIcon.isEmpty()) {
+        console.warn(`Failed to load icon from: ${iconPath}. It might be empty or invalid.`);
+      }
+    } catch (error) {
+      console.error(`Error loading icon from ${iconPath}:`, error);
+    }
+
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: appIcon,//windowicon nativeimage isntance
 
     webPreferences:{
       preload: path.join(__dirname, 'preload.js'),
@@ -74,6 +96,21 @@ app.whenReady().then(() => {
   registerIpcHandlers();//register ipc handlers first and foremost
   // console.log('CHANNEL_DATA path:', CHANNEL_DATA);
   createWindow();//create the browser window
+
+  // For macOS: Set the dock icon explicitly during development//when building for prdduction this is gonna be handled anyway
+  if (process.platform === 'darwin') {//notice how darwin here means specifically for macOS
+    const iconPathMac = path.join(__dirname, 'assets', 'icons', 'icon-youtubefiling.icns');
+    try {//similar to the other try catch for icons but specifically for dock
+      const dockIcon = nativeImage.createFromPath(iconPathMac);
+      if (!dockIcon.isEmpty()) {
+        app.dock.setIcon(dockIcon);
+      } else {
+        console.warn(`Failed to load dock icon from: ${iconPathMac}. It might be empty or invalid.`);
+      }
+    } catch (error) {
+      console.error(`Error loading dock icon from ${iconPathMac}:`, error);
+    }
+  }
 
   app.on('activate',() =>{
     if(BrowserWindow.getAllWindows().length===0) createWindow();

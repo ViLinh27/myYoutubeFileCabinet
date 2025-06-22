@@ -76,6 +76,10 @@ add channel button (custom)
 ![search button](./assets/buttons/search-button.png)
 search button
 
+### Best icns converter so far:
+
+https://anyconv.com/png-to-icns-converter/
+
 ## Hex codes
 
 bg color: e86e62
