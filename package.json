@@ -4,9 +4,11 @@
   "description": "Practicing backend, electron, and organize my youtube subscriptions",
   "main": "main.js",
   "scripts": {
-    "start": "npm run build-renderer && electron .",
+    "start": "electron-forge start",
     "test": "test",
-    "build-renderer": "parcel build render.js --out-dir dist --out-file render.js --target browser --no-cache"
+    "build-renderer": "parcel build render.js --out-dir dist --out-file render.js --target browser --no-cache",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -25,23 +27,34 @@
   },
   "homepage": "https://github.com/ViLinh27/myYoutubeFileCabinet#readme",
   "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
     "electron": "^36.4.0",
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
-    "electron-builder": "^26.0.12",
+    "electron-squirrel-startup": "^1.0.1",
     "fuse.js": "^7.1.0"
   },
-  "build":{
+  "build": {
     "productName": "Youtube File Cabinet",
-    "mac":{
-      "icon":"./assets/icons/icon-youtubefiling.icns"
+    "directories": {
+      "output": "build"
     },
-    "win":{
-      "icon":"./assets/icons/icon-youtubefiling.ico"
+    "mac": {
+      "icon": "./assets/icons/icon-youtubefiling.icns"
     },
-    "linux":{
-      "icon":"./assets/icons/icon-youtubefiling.png"
+    "win": {
+      "icon": "./assets/icons/icon-youtubefiling.ico"
+    },
+    "linux": {
+      "icon": "./assets/icons/icon-youtubefiling.png"
     }
   }
 }
